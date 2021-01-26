@@ -2,6 +2,10 @@
     border:1px solid black;
 } */
 
+
+body {
+    height: 4000px;
+}
 .c-body {
     max-width: 1920px;
     display:block;
@@ -9,14 +13,37 @@
     margin-right:auto;
 }
 
+.header-text {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    white-space: nowrap;
+    height:fit-content;
+    
+
+}
+
+#title-text{
+    padding: 0 10px;
+    max-height: 50px;
+    /* font-size: 3vw; */
+    min-width:0;
+    /* animation-name: sticky-animation; */
+    animation-duration: 1s;
+}
+
+.main-nav{
+    display:block;
+
+}
 .m-body {
     margin: 30px;
     display:block;
 }
-
-/* .main-nav {
-    background-color:rgb(107, 107, 107);
-} */
 
 .nav-buttons{
     display: flex;
@@ -26,11 +53,15 @@
     padding:0 25px;
     /* flex-grow:1; */
     max-height: 250px;
+    user-select: none;
+    -webkit-user-select: none; /*Safari*/
+    -moz-user-select: none; /*Firefox*/
+    
 }
 
-.nav-buttons p{
+.nav-buttons p, .cloned-nav p{
     min-width: 140px;
-    min-height: 80px;
+    height: 80px;
     border: 1px black solid;
     display:flex;
     align-items: center;
@@ -38,22 +69,52 @@
     margin: 5px;
     color: white;
     flex-grow:1;
-    font-size:2em;
-
-    
+    font-size:1.5em;
+      
 }
 
-.nav-buttons p:hover {
+.cloned-nav p{
+    /* font-size: 1.5vw; */
+    max-height: 50px;
+}
+
+.nav-buttons p:hover, .cloned-nav p:hover {
     filter:brightness(70%);
     cursor:pointer;
     
 }
 
+.cloned-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    animation-duration: 1s;
+
+}
+
+@keyframes sticky-animation {
+    from   {transform: translateX(100px)}
+    to { transform: translateX(0)}
+  }
+@keyframes sticky-animation-reverse {
+    from   {transform: translateX(100x)}
+    to { transform: translateX(0)}
+}
+
+@keyframes btn-sticky-animation {
+    from   {opacity:0}
+    to { opacity:1}
+}
+
+@keyframes btn-sticky-animation-reverse {
+    from   {opacity:1}
+    to { opacity:0}
+    }
+
 
 
 @media only screen and (min-width: 767px){
     .nav-buttons{
-
         flex-direction:row;
         align-items: center;
         flex-wrap: nowrap;
@@ -61,9 +122,17 @@
         margin-left:auto;
         margin-right:auto;
     }
-    .nav-buttons p{
-        width: 150px;
-        min-height: 100px;
-    }
 }
 
+
+
+@media only screen and (min-width: 575px){
+    .hero {
+        background-image: url("./img/header_img/WhatsApp\ Image\ 2021-01-21\ at\ 15.27.03\ \(2\).jpeg");
+        height:400px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
