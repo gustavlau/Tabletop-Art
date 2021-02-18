@@ -11,35 +11,55 @@ fillNavButtons();
 
 let navButtonsClone = document.querySelector(".nav-buttons");
 let cloneMenuItems = navButtonsClone.cloneNode(true);
-let attachCloneToHeader = document.querySelector(".header-text")
+
+
+// function cloneMenu (){
+//     let animateHeader = document.querySelector(".title-text");
+//     attachCloneToHeader.appendChild(cloneMenuItems).style.visibility="hidden";
+//     cloneMenuItems.className="title-text";
+//     // cloneMenuItems.classList.add("title-text");
+//     cloneMenuItems.style.flexGrow="1";
+//     animateHeader.style.flexGrow="1";  
+//     var stickyTimer = setInterval(animateClone,1000);
+//     function animateClone(){        
+//         cloneMenuItems.style.visibility="visible";
+//         cloneMenuItems.style.animationName="btn-sticky-animation";
+//         clearInterval(stickyTimer);
+//     }
+// }
+
+let scrollHeaderDiv = document.querySelector(".remove");
+var toggleHeader = 1;
+
 
 function cloneMenu (){
-    let animateHeader = document.getElementById("title-text");
-    animateHeader.style.animationName="sticky-animation";
-    attachCloneToHeader.appendChild(cloneMenuItems).style.visibility="hidden";
-    cloneMenuItems.className="cloned-nav";    
-
-    var stickyTimer = setInterval(animateClone,1000);
-    function animateClone(){        
-        cloneMenuItems.style.visibility="visible";
-        cloneMenuItems.style.animationName="btn-sticky-animation";
-        clearInterval(stickyTimer);
-    }
+    scrollHeaderDiv.appendChild(cloneMenuItems).style.display="none";
+    // scrollHeaderDiv.classList.add("title-text");
+    // scrollHeaderDiv.style.flexGrow="0";
+    scrollHeaderDiv.style.flexGrow="2"; 
+    cloneMenuItems.classList.add("cloned-nav");
+    cloneMenuItems.classList.remove("nav-buttons");
+    setTimeout(function(){
+        cloneMenuItems.style.display="flex";   
+        cloneMenuItems.style.WebkitAnimation = "btn-sticky-animation .5s 1";                
+    },800);
 }
+
     
 
-
-
-function removeClonedNodes (){
-    let animateHeader = document.getElementById("title-text");
-    animateHeader.style.animationName="sticky-animation-reverse";
-    let animateBtnClone = document.querySelector(".cloned-nav");
-    animateBtnClone.style.animationName="btn-sticky-animation-reverse"
-    while (attachCloneToHeader.children.length >1){
-        attachCloneToHeader.removeChild(attachCloneToHeader.lastElementChild);
-  }
+    // setTimeout(function(){
+    //     //Moves the children from cloneMenuItems to createScrollDiv to avoid too many nests
+    //     while(cloneMenuItems.childNodes.length){
+    //         createScrollDiv.appendChild(cloneMenuItems.firstChild);
+    //     }
+    // },1000);
+    
+ 
+function removeClonedNodes (){    
+    cloneMenuItems.style.WebkitAnimation = "btn-sticky-animation-reverse 0.5s 1";
+    cloneMenuItems.style.display="none";
+    scrollHeaderDiv.style.flexGrow="0";
 }
-
 
 var viewPortCheck = document.querySelector(".nav-buttons");
 var bounding = viewPortCheck.getBoundingClientRect();
@@ -81,16 +101,20 @@ function windowResize (){
 
 //Add items to the sticky menu on scroll and criterias are met
 function moveToTopOn (){
-    let leftAlignHeader = document.querySelector(".header-text");
     let mediaMatch=window.matchMedia("screen and (min-width: 999px) ") 
-    if(mediaMatch.matches && scrollBoolean.children.length >= 1 && scrollBoolean.children.length <2){
-        console.log("I have children!")
-        cloneMenu(); 
+    if(mediaMatch.matches && scrollBoolean.children.length >= 2 && scrollBoolean.children.length <3){
+        console.log("I have children!");
+        if(scrollHeaderDiv.style.flexGrow !="2"){
+            cloneMenu();
+        }
+         
     }   
 }
 
 //Remove the items from sticky menu when it reaches the top again
 function moveToTopOff (){
-    let leftAlignHeader = document.querySelector(".header-text");
     removeClonedNodes();
 }
+
+
+
