@@ -1,0 +1,54 @@
+/* *{
+    border: 1px solid black;
+} */
+body{
+    margin:50px;
+}
+.colouring-area{
+    display: flex;
+    flex-direction: column;
+}
+
+/* .scaling-svg-container{
+    display: block;
+    text-indent: -9999px;
+    width: 100px;
+    height: 82px;
+    background: url('/img/svg/space-marine.svg');
+    background-size: 100px 82px; 
+
+} */
+.scaling-svg-container {
+    position: relative; 
+    height:0; 
+    width: 100%;
+    padding: 0;
+    padding-bottom: 100%; 
+    background-color: white;
+}
+.scaling-svg {
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    left: 0; 
+    top:0;    
+}
+
+.cls-1{
+    fill:white;
+}
+
+.cls-2{
+    fill:white;
+}
+
+.outline{
+    fill:rgb(0, 0, 0);
+}
+
+@media only screen and (min-width: 767px){
+    .colouring-area{
+        display: flex;
+        flex-direction:row;
+    }
+}
