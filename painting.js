@@ -1,19 +1,3 @@
-// let classNumCheck = document.querySelectorAll(".cls-1");
-
-// function clearColour (){
-//     var i =0;
-//     while(i<300){
-//         document.querySelector(".cls-1").classList.replace("cls-1","cls-2");
-//         document.querySelector(".cls-2").style.fill="white";
-//         i++;
-//     }
-    
-// }
-
-// let clearBtn = document.getElementById("btn-clear");
-
-// clearBtn.addEventListener("click",clearColour);
-
 //colour picker from https://github.com/Simonwep/pickr
 const pickr = new Pickr({
     el: '.color-picker',
@@ -70,11 +54,40 @@ pickr.on('change', (color, instance) => {
     colourStorage = rgbaColor;
 })
 
+//Selects svg element and fills it with the colour picker's colour
 function targetTest (e){
     var clickedItem = e.target
-    if(!clickedItem.classList.contains("outline")){
+    // if(clickedItem.hasAttribute("path")){
         clickedItem.style.fill=colourStorage;
-    }
+    // }
 }
 
 document.addEventListener("click", targetTest, false);
+
+//changes the svg based on clicked img
+function changeSvg (e){
+    let svgTarget = e.target
+    if(svgTarget.classList.contains("target-prot")){ // only works with the image gallery class
+        console.log(svgTarget.getAttribute("src"));
+        loadSvg("#svg",svgTarget.getAttribute("src"));
+    }
+
+}
+
+document.addEventListener("click", changeSvg, false);
+
+//loads in the svg file for inline HTML
+function loadSvg(selector, url) {
+    let target = document.querySelector(selector);
+    // Request the SVG file
+      let ajax = new XMLHttpRequest();
+      ajax.open("GET", url, true);
+      ajax.send();
+  
+      // Append the SVG to the target
+      ajax.onload = function() {
+        target.innerHTML = ajax.responseText;
+        target.classList.add(".outline");
+        document.querySelector("svg").setAttribute("height","100%");
+      }
+  }

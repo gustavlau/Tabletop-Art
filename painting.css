@@ -7,17 +7,16 @@ body{
 .colouring-area{
     display: flex;
     flex-direction: column;
+    max-width: 1500px;
 }
 
-/* .scaling-svg-container{
-    display: block;
-    text-indent: -9999px;
-    width: 100px;
-    height: 82px;
-    background: url('/img/svg/space-marine.svg');
-    background-size: 100px 82px; 
-
+/* #svg {
+    background:url("/img/svg/space-marine.svg");
+    width: 100%;
+    height:500px;
+    
 } */
+
 .scaling-svg-container {
     position: relative; 
     height:0; 
@@ -33,6 +32,11 @@ body{
     left: 0; 
     top:0;    
 }
+
+/* svg {
+    height:auto;
+} */
+
 
 .cls-1{
     fill:white;
@@ -51,4 +55,18 @@ body{
         display: flex;
         flex-direction:row;
     }
+}
+
+.svg-gallery {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width:100%;
+    flex-wrap:wrap;
+}
+
+.svg-gallery img {
+    flex-grow:1;
+    width:fit-content;
+    border:1px solid black;
 }
