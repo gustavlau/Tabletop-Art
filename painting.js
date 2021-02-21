@@ -4,7 +4,9 @@ const pickr = new Pickr({
     theme: 'nano', // or 'monolith', or 'nano'
     showAlways: true,
     useAsButton: true,
-    position: 'right',
+    position: 'right-middle',
+    autoReposition: false,
+    inline: true,
 
     swatches: [
         '#0066B3',
@@ -18,10 +20,11 @@ const pickr = new Pickr({
         '#B7BEC5',
         '#EFB736',
         '#93ABAF',
-        '#A43E8B ',
+        '#A43E8B',
         '#D2223E',
         '#FFF200',
         '#A43E8B',
+        '#000000',
     ],
 
 
@@ -55,14 +58,13 @@ pickr.on('change', (color, instance) => {
 })
 
 //Selects svg element and fills it with the colour picker's colour
-function targetTest (e){
+function colourTarget (e){
     var clickedItem = e.target
-    // if(clickedItem.hasAttribute("path")){
+    if(!clickedItem.classList.contains("outline") && !clickedItem.hasAttribute("viewBox")){
         clickedItem.style.fill=colourStorage;
-    // }
+    }
 }
-
-document.addEventListener("click", targetTest, false);
+document.addEventListener("click", colourTarget, false);
 
 //changes the svg based on clicked img
 function changeSvg (e){
@@ -87,7 +89,9 @@ function loadSvg(selector, url) {
       // Append the SVG to the target
       ajax.onload = function() {
         target.innerHTML = ajax.responseText;
-        target.classList.add(".outline");
+        target.classList.add("outline");
         document.querySelector("svg").setAttribute("height","100%");
       }
   }
+
+let svgGalleryLoad = [];
