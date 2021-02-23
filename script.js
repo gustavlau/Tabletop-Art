@@ -1,4 +1,4 @@
-// let navButtonsPics = document.querySelector("#nav-buttons").children;
+//fills the navigation buttons with images
 let navButtonsPics = document.querySelector(".nav-buttons").children;
 function fillNavButtons() {
     for(i=0; i<navButtonsPics.length; i++){
@@ -34,26 +34,16 @@ var toggleHeader = 1;
 
 function cloneMenu (){
     scrollHeaderDiv.appendChild(cloneMenuItems).style.display="none";
-    // scrollHeaderDiv.classList.add("title-text");
-    // scrollHeaderDiv.style.flexGrow="0";
     scrollHeaderDiv.style.flexGrow="2"; 
     cloneMenuItems.classList.add("cloned-nav");
     cloneMenuItems.classList.remove("nav-buttons");
     setTimeout(function(){
-        cloneMenuItems.style.display="flex";   
-        cloneMenuItems.style.WebkitAnimation = "btn-sticky-animation .5s 1";                
+        if(scrollHeaderDiv.style.flexGrow!="0"){ //prevents below code from firing if user scrolls too fast back and forth
+            cloneMenuItems.style.display="flex";   
+            cloneMenuItems.style.WebkitAnimation = "btn-sticky-animation .5s 1";
+        }                       
     },800);
 }
-
-    
-
-    // setTimeout(function(){
-    //     //Moves the children from cloneMenuItems to createScrollDiv to avoid too many nests
-    //     while(cloneMenuItems.childNodes.length){
-    //         createScrollDiv.appendChild(cloneMenuItems.firstChild);
-    //     }
-    // },1000);
-    
  
 function removeClonedNodes (){    
     cloneMenuItems.style.WebkitAnimation = "btn-sticky-animation-reverse 0.5s 1";
@@ -77,10 +67,8 @@ function isVisible (ele) {
 
 function scrollCheck (){
     if (isVisible(viewPortCheck)) {
-        // console.log('In viewport!');
         moveToTopOff();
     } else {
-        // console.log('Nope...');
         moveToTopOn();
     }
 }

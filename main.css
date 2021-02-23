@@ -35,7 +35,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin:0 5px;
+    margin:0 15px;
     font-family: 'Michroma', sans-serif;
     white-space: nowrap;
     font-size: 25px;
@@ -49,6 +49,7 @@ body {
 .m-body {
     margin: 30px;
     display:block;
+    padding: 15px 0;
 }
 
 .nav-buttons{
@@ -132,6 +133,16 @@ body {
     to { opacity:0}
     }
 
+@media only screen and (min-width: 575px){
+    .hero {
+        background-image: url("./img/header_img/WhatsApp\ Image\ 2021-01-21\ at\ 15.27.03\ \(2\).jpeg");
+        height:400px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
 
 
 @media only screen and (min-width: 767px){
@@ -144,21 +155,12 @@ body {
         margin-right:auto;
     }
 
+    .m-body {
+        margin:30px 60px;
+    }
+
     .title-text{
         font-size: min(2.5vw, 36px);
-    }
-}
-
-
-
-@media only screen and (min-width: 575px){
-    .hero {
-        background-image: url("./img/header_img/WhatsApp\ Image\ 2021-01-21\ at\ 15.27.03\ \(2\).jpeg");
-        height:400px;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 }
 
