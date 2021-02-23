@@ -6,27 +6,41 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
+      <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Roboto&display=swap" rel="stylesheet">    
       <link href="main.css" rel="stylesheet">
       <link href="painting.css" rel="stylesheet">
-      <title>Document</title>
+
+      <title>Painting</title>
    </head>
    <body>
-      <container >
-         <div class="svg-gallery">
-            <img class="target-prot" id="svg-1" src="img/svg/svg1.svg">
-            <img class="target-prot" id="svg-2" src="img/svg/svg2.svg">
-            <img class="target-prot" id="svg-3" src="img/svg/svg3.svg">
-
+      <header class="header-text">
+          <h1 class="title-text">Craft Paint Tabletop</h1>
+      </header>
+      <container class="grid-area">
+         <div class="btn-selection">
+            <button type="button" class="svg-btn btn btn-primary" data-target="#collapse-svg" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-svg">Select Drawing</button>
+            <div class="collapse svg-gallery" id="collapse-svg">
+               <img class="target-prot" id="svg-1" src="img/svg/svg1.svg">
+               <img class="target-prot" id="svg-2" src="img/svg/svg2.svg">
+               <img class="target-prot" id="svg-3" src="img/svg/svg3.svg">
+            </div>         
          </div>
-        <!-- <button id="btn-zoom-in">Zoom-in</button> -->
-        <div class="colouring-area">            
-            <div class="scaling-svg-container">
-                <div class="scaling-svg" id="svg"></div>             
+         <div class="btn-zoom-clear">
+            <button type="button" class="btn btn-primary">Clear Colours</button>
+         </div>
+         <div class="colour-selection">
+            <div class="color-picker"></div> 
+         </div>
+         <div class="svg-location">
+            <div class="scaling-svg-container" style="padding-bottom: 100%">
+               <div class="scaling-svg" id="svg"></div>                     
             </div>
-            <div class="color-picker"></div>
-        </div>
+         </div>
       </container>
       <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="painting.js"></script>
    </body>
 </html>
