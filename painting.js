@@ -50,7 +50,7 @@ const pickr = new Pickr({
     }
 });
 
-let colourStorage
+let colourStorage //variable to store the selected colour
 
 pickr.on('change', (color, instance) => {
     const rgbaColor = color.toRGBA().toString();
@@ -58,7 +58,7 @@ pickr.on('change', (color, instance) => {
     colourStorage = rgbaColor;
 })
 
-//Selects svg element and fills it with the colour picker's colour
+//Selects svg element and fills it with the stored colour
 function colourTarget (e){
     var clickedItem = e.target
     if(!clickedItem.classList.contains("outline") && !clickedItem.hasAttribute("viewBox") && !clickedItem.classList.contains("colouring-area")){ //prevents colouring the contour when clicking the white space near svg
@@ -72,7 +72,6 @@ document.addEventListener("click", colourTarget, false);
 function changeSvg (e){
     let svgTarget = e.target
     if(svgTarget.classList.contains("target-prot")){ // only works with the image gallery class
-        // console.log(svgTarget.getAttribute("src"));
         loadSvg("#svg",svgTarget.getAttribute("src"));                
     }
 
@@ -99,20 +98,16 @@ function loadSvg(selector, url) {
 }
 
 
-let clearColourBtn = document.querySelector(".btn-zoom-clear");
+// let clearColourBtn = document.querySelector(".btn-zoom-clear");
 
-clearColourBtn.addEventListener("click", clearColours);
+// clearColourBtn.addEventListener("click", clearColours);
 
-// function clearColours (){
-//     let svgParent = document.querySelector(".scaling-svg-container");
-//     let selectAllDescendantsOfSvg = svgParent.getElementsByTagName("*");
-//     let attributeSet = selectAllDescendantsOfSvg[3];
-//     if(attributeSet.firstChild.hasAttribute="path"){
-//         attributeSet.style.fill="#000000";
-//         console.log(selectAllDescendantsOfSvg[3]);   
-//     }
-// }
-
-function clearColours(){
-    
+function clearColours (){
+    let svgParent = document.querySelector(".scaling-svg-container");
+    let selectAllDescendantsOfSvg = svgParent.getElementsByTagName("*");
+    let attributeSet = selectAllDescendantsOfSvg[1];
+    if(attributeSet.firstChild.hasAttribute="path"){
+        attributeSet.style.fill="#000000";
+        console.log(selectAllDescendantsOfSvg[1]);   
+    }
 }
