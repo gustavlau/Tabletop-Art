@@ -78,7 +78,7 @@ function changeSvg (e){
 }
 
 
-loadSvg("#svg","/img/svg/svg1.svg");
+// loadSvg("#svg","/img/svg/svg1.svg");
 document.addEventListener("click", changeSvg, false);
 
 //loads in the svg file for inline HTML
