@@ -49,7 +49,7 @@ body {
 .m-body {
     margin: 30px;
     display:block;
-    padding: 15px 0;
+    padding: 25px 0;
 }
 
 .nav-buttons{
@@ -164,28 +164,6 @@ body {
     }
 }
 
-
-.test-container {
-    display: flex;
-    /* justify-content: center; */
-    justify-content: center;
+.footer{
+    height: 50px;
 }
-
-.test1 {
-    /* flex-grow: 1; */
-    transition:all 500ms;
-
-    /* flex-shrink:1; */
-}
-.test2{
-    overflow:hidden;
-    width:0;
-    flex-grow:1;
-    transition:all 1000ms;
-    text-align: center;
-    /* flex-shrink:1; */
-}
-/* .test3{
-    flex-grow:0;
-    transition:all 500ms;
-} */
