@@ -52,9 +52,8 @@ const pickr = new Pickr({
 
 let colourStorage //variable to store the selected colour
 
-pickr.on('change', (color, instance) => {
+pickr.on('change', (color) => {
     const rgbaColor = color.toRGBA().toString();
-    // console.log(rgbaColor);
     colourStorage = rgbaColor;
 })
 
@@ -71,14 +70,12 @@ document.addEventListener("click", colourTarget, false);
 //changes the svg based on clicked img
 function changeSvg (e){
     let svgTarget = e.target
-    if(svgTarget.classList.contains("target-prot")){ // only works with the image gallery class
+    if(svgTarget.classList.contains("target-prot")){ // only works with the image gallery class, prevents colouring other elements on page
         loadSvg("#svg",svgTarget.getAttribute("src"));                
     }
 
 }
 
-
-// loadSvg("#svg","/img/svg/svg1.svg");
 document.addEventListener("click", changeSvg, false);
 
 //loads in the svg file for inline HTML
@@ -97,11 +94,7 @@ function loadSvg(selector, url) {
     }
 }
 
-
-// let clearColourBtn = document.querySelector(".btn-zoom-clear");
-
-// clearColourBtn.addEventListener("click", clearColours);
-
+//To clear the picture of colours, NOT WORKING YET, variation in each svg drawing preventing proper targeting
 function clearColours (){
     let svgParent = document.querySelector(".scaling-svg-container");
     let selectAllDescendantsOfSvg = svgParent.getElementsByTagName("*");
@@ -111,3 +104,23 @@ function clearColours (){
         console.log(selectAllDescendantsOfSvg[1]);   
     }
 }
+
+//auto collapsing content after svg is selected
+let autoCollapseDrawing = document.querySelectorAll(".target-prot");
+
+//loop through add event listener to each of the autoCollapseDrawing array values (each svg drawing preview)
+for(i=0;i<autoCollapseDrawing.length;i++){
+    autoCollapseDrawing[i].addEventListener('click',autoCollapseWhenSelect);
+}
+
+//activates the collapse animation
+function autoCollapseWhenSelect (){
+    let autoCollapseSelectionBtn = [].slice.call(document.querySelectorAll(".collapse"));
+    autoCollapseSelectionBtn.map((collapse)=> {
+        return new bootstrap.Collapse(collapse)
+    })
+}
+
+
+// let clearColourBtn = document.querySelector(".btn-zoom-clear");
+// clearColourBtn.addEventListener("click", clearColours);
