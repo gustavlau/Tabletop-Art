@@ -65,7 +65,8 @@ function colourTarget (e){
     }
 }
 
-document.addEventListener("click", colourTarget, false);
+let colourBoundaries = document.querySelector(".scaling-svg-container");
+colourBoundaries.addEventListener("click", colourTarget, false);
 
 //changes the svg based on clicked img
 function changeSvg (e){
@@ -121,6 +122,3 @@ function autoCollapseWhenSelect (){
     })
 }
 
-
-// let clearColourBtn = document.querySelector(".btn-zoom-clear");
-// clearColourBtn.addEventListener("click", clearColours);
