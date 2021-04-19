@@ -7,34 +7,6 @@ body{
 }
 
 
-.nav-buttons{
-    display: flex;
-    flex-wrap: wrap;
-    /* flex-direction: column; */
-    justify-content: space-between;
-    padding:0 25px;
-    max-height: 250px;
-    user-select: none;
-    -webkit-user-select: none; /*Safari*/
-    -moz-user-select: none; /*Firefox*/
-    
-    
-}
-
-.nav-buttonss a{
-    /* min-width: 140px; */
-    /* height: 80px;
-    border: 1px black solid; */
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-    color: white;
-    flex-grow:1;
-    font-size:1.5em;
-    
-}
-
   
 
 .scaling-svg-container {
